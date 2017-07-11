@@ -11,7 +11,12 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("xml")
 public class WxEntPayResult extends WxPayBaseResult {
 
-  /**
+  public WxEntPayResult() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+/**
    * 商户appid
    */
   @XStreamAlias("mch_appid")

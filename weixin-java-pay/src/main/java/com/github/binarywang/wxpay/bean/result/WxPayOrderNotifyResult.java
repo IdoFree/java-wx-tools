@@ -23,7 +23,12 @@ public class WxPayOrderNotifyResult extends WxPayBaseResult implements Serializa
 
   private static final long serialVersionUID = 5389718115223345496L;
 
-  /**
+  public WxPayOrderNotifyResult() {
+	super();
+	// TODO Auto-generated constructor stub
+}
+
+/**
    * <pre>
    * 设备号
    * device_info

@@ -12,7 +12,12 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("xml")
 public class WxPayOrderCloseResult extends WxPayBaseResult {
 
-  /**
+  public WxPayOrderCloseResult() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+/**
    * 业务结果描述
    */
   @XStreamAlias("result_msg")

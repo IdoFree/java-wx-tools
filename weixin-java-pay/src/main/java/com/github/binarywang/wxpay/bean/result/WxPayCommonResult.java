@@ -12,4 +12,10 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 @XStreamAlias("xml")
 public class WxPayCommonResult extends WxPayBaseResult {
+
+	public WxPayCommonResult() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 }

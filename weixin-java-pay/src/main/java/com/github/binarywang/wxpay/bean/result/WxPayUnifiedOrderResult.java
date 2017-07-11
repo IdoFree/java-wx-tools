@@ -13,7 +13,10 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("xml")
 public class WxPayUnifiedOrderResult extends WxPayBaseResult {
 
-  /**
+  public WxPayUnifiedOrderResult() {
+	}
+
+/**
    * 微信生成的预支付回话标识，用于后续接口调用中使用，该值有效期为2小时
    */
   @XStreamAlias("prepay_id")

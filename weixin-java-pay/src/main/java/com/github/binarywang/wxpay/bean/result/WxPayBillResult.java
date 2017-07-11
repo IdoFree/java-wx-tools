@@ -4,7 +4,12 @@ import java.io.Serializable;
 import java.util.List;
 
 public class WxPayBillResult implements Serializable {
-  /**
+  public WxPayBillResult() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+/**
    * 对账返回对象
    */
   private static final long serialVersionUID = 1L;

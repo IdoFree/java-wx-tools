@@ -45,7 +45,7 @@ public class WxPayServiceImpl implements WxPayService {
     this.config = config;
   }
 
-  private String getPayBaseUrl() {
+  public String getPayBaseUrl() {
     if (this.getConfig().useSandbox()) {
       return PAY_BASE_URL + "/sandboxnew";
     }
@@ -59,7 +59,7 @@ public class WxPayServiceImpl implements WxPayService {
 
     String url = this.getPayBaseUrl() + "/secapi/pay/refund";
     String responseContent = this.postWithKey(url, request.toXML());
-    WxPayRefundResult result = WxPayBaseResult.fromXML(responseContent, WxPayRefundResult.class);
+    WxPayRefundResult result = (WxPayRefundResult) WxPayBaseResult.fromXML(responseContent, WxPayRefundResult.class);
     result.checkResult(this);
     return result;
   }
@@ -77,7 +77,7 @@ public class WxPayServiceImpl implements WxPayService {
 
     String url = this.getPayBaseUrl() + "/pay/refundquery";
     String responseContent = this.post(url, request.toXML(), true);
-    WxPayRefundQueryResult result = WxPayBaseResult.fromXML(responseContent, WxPayRefundQueryResult.class);
+    WxPayRefundQueryResult result = (WxPayRefundQueryResult) WxPayBaseResult.fromXML(responseContent, WxPayRefundQueryResult.class);
     result.composeRefundRecords();
     result.checkResult(this);
     return result;
@@ -111,7 +111,7 @@ public class WxPayServiceImpl implements WxPayService {
     }
 
     String responseContent = this.postWithKey(url, request.toXML());
-    WxPaySendRedpackResult result = WxPayBaseResult.fromXML(responseContent, WxPaySendRedpackResult.class);
+    WxPaySendRedpackResult result = (WxPaySendRedpackResult) WxPayBaseResult.fromXML(responseContent, WxPaySendRedpackResult.class);
     //毋须校验，因为没有返回签名信息
     // this.checkResult(result);
     return result;
@@ -126,7 +126,7 @@ public class WxPayServiceImpl implements WxPayService {
 
     String url = this.getPayBaseUrl() + "/mmpaymkttransfers/gethbinfo";
     String responseContent = this.postWithKey(url, request.toXML());
-    WxPayRedpackQueryResult result = WxPayBaseResult.fromXML(responseContent, WxPayRedpackQueryResult.class);
+    WxPayRedpackQueryResult result = (WxPayRedpackQueryResult) WxPayBaseResult.fromXML(responseContent, WxPayRedpackQueryResult.class);
     result.checkResult(this);
     return result;
   }
@@ -144,7 +144,7 @@ public class WxPayServiceImpl implements WxPayService {
       throw new WxPayException("无响应结果");
     }
 
-    WxPayOrderQueryResult result = WxPayBaseResult.fromXML(responseContent, WxPayOrderQueryResult.class);
+    WxPayOrderQueryResult result = (WxPayOrderQueryResult) WxPayBaseResult.fromXML(responseContent, WxPayOrderQueryResult.class);
     result.composeCoupons();
     result.checkResult(this);
     return result;
@@ -162,7 +162,7 @@ public class WxPayServiceImpl implements WxPayService {
 
     String url = this.getPayBaseUrl() + "/pay/closeorder";
     String responseContent = this.post(url, request.toXML(), true);
-    WxPayOrderCloseResult result = WxPayBaseResult.fromXML(responseContent, WxPayOrderCloseResult.class);
+    WxPayOrderCloseResult result = (WxPayOrderCloseResult) WxPayBaseResult.fromXML(responseContent, WxPayOrderCloseResult.class);
     result.checkResult(this);
 
     return result;
@@ -174,7 +174,7 @@ public class WxPayServiceImpl implements WxPayService {
 
     String url = this.getPayBaseUrl() + "/pay/unifiedorder";
     String responseContent = this.post(url, request.toXML(), true);
-    WxPayUnifiedOrderResult result = WxPayBaseResult.fromXML(responseContent, WxPayUnifiedOrderResult.class);
+    WxPayUnifiedOrderResult result = (WxPayUnifiedOrderResult) WxPayBaseResult.fromXML(responseContent, WxPayUnifiedOrderResult.class);
     result.checkResult(this);
     return result;
   }
@@ -229,7 +229,7 @@ public class WxPayServiceImpl implements WxPayService {
     String url = this.getPayBaseUrl() + "/mmpaymkttransfers/promotion/transfers";
 
     String responseContent = this.postWithKey(url, request.toXML());
-    WxEntPayResult result = WxPayBaseResult.fromXML(responseContent, WxEntPayResult.class);
+    WxEntPayResult result = (WxEntPayResult) WxPayBaseResult.fromXML(responseContent, WxEntPayResult.class);
     result.checkResult(this);
     return result;
   }
@@ -242,7 +242,7 @@ public class WxPayServiceImpl implements WxPayService {
 
     String url = this.getPayBaseUrl() + "/mmpaymkttransfers/gettransferinfo";
     String responseContent = this.postWithKey(url, request.toXML());
-    WxEntPayQueryResult result = WxPayBaseResult.fromXML(responseContent, WxEntPayQueryResult.class);
+    WxEntPayQueryResult result = (WxEntPayQueryResult) WxPayBaseResult.fromXML(responseContent, WxEntPayQueryResult.class);
     result.checkResult(this);
     return result;
   }
@@ -295,7 +295,7 @@ public class WxPayServiceImpl implements WxPayService {
 
     String url = this.getPayBaseUrl() + "/payitil/report";
     String responseContent = this.post(url, request.toXML(), true);
-    WxPayCommonResult result = WxPayBaseResult.fromXML(responseContent, WxPayCommonResult.class);
+    WxPayCommonResult result = (WxPayCommonResult) WxPayBaseResult.fromXML(responseContent, WxPayCommonResult.class);
     result.checkResult(this);
   }
 
@@ -312,7 +312,7 @@ public class WxPayServiceImpl implements WxPayService {
     String url = this.getPayBaseUrl() + "/pay/downloadbill";
     String responseContent = this.post(url, request.toXML(), true);
     if (responseContent.startsWith("<")) {
-      WxPayCommonResult result = WxPayBaseResult.fromXML(responseContent, WxPayCommonResult.class);
+      WxPayCommonResult result = (WxPayCommonResult) WxPayBaseResult.fromXML(responseContent, WxPayCommonResult.class);
       result.checkResult(this);
       return null;
     } else {
@@ -398,7 +398,7 @@ public class WxPayServiceImpl implements WxPayService {
 
     String url = this.getPayBaseUrl() + "/pay/micropay";
     String responseContent = this.post(url, request.toXML(), true);
-    WxPayMicropayResult result = WxPayBaseResult.fromXML(responseContent, WxPayMicropayResult.class);
+    WxPayMicropayResult result = (WxPayMicropayResult) WxPayBaseResult.fromXML(responseContent, WxPayMicropayResult.class);
     result.checkResult(this);
     return result;
   }
@@ -409,7 +409,7 @@ public class WxPayServiceImpl implements WxPayService {
 
     String url = this.getPayBaseUrl() + "/secapi/pay/reverse";
     String responseContent = this.postWithKey(url, request.toXML());
-    WxPayOrderReverseResult result = WxPayBaseResult.fromXML(responseContent, WxPayOrderReverseResult.class);
+    WxPayOrderReverseResult result = (WxPayOrderReverseResult) WxPayBaseResult.fromXML(responseContent, WxPayOrderReverseResult.class);
     result.checkResult(this);
     return result;
   }
@@ -420,7 +420,7 @@ public class WxPayServiceImpl implements WxPayService {
 
     String url = this.getPayBaseUrl() + "/tools/shorturl";
     String responseContent = this.post(url, request.toXML(), true);
-    WxPayShorturlResult result = WxPayBaseResult.fromXML(responseContent, WxPayShorturlResult.class);
+    WxPayShorturlResult result = (WxPayShorturlResult) WxPayBaseResult.fromXML(responseContent, WxPayShorturlResult.class);
     result.checkResult(this);
     return result.getShortUrl();
   }
@@ -436,7 +436,7 @@ public class WxPayServiceImpl implements WxPayService {
 
     String url = this.getPayBaseUrl() + "/tools/authcodetoopenid";
     String responseContent = this.post(url, request.toXML(), true);
-    WxPayAuthcode2OpenidResult result = WxPayBaseResult.fromXML(responseContent, WxPayAuthcode2OpenidResult.class);
+    WxPayAuthcode2OpenidResult result = (WxPayAuthcode2OpenidResult) WxPayBaseResult.fromXML(responseContent, WxPayAuthcode2OpenidResult.class);
     result.checkResult(this);
     return result.getOpenid();
   }
@@ -453,7 +453,7 @@ public class WxPayServiceImpl implements WxPayService {
 
     String url = "https://api.mch.weixin.qq.com/sandboxnew/pay/getsignkey";
     String responseContent = this.post(url, request.toXML(), false);
-    WxPaySandboxSignKeyResult result = WxPayBaseResult.fromXML(responseContent, WxPaySandboxSignKeyResult.class);
+    WxPaySandboxSignKeyResult result = (WxPaySandboxSignKeyResult) WxPayBaseResult.fromXML(responseContent, WxPaySandboxSignKeyResult.class);
     result.checkResult(this);
     return result.getSandboxSignKey();
   }
@@ -464,7 +464,7 @@ public class WxPayServiceImpl implements WxPayService {
    * @param needTransferEncoding 是否需要对结果进行重编码
    * @return 返回请求结果
    */
-  private String post(String url, String xmlParam, boolean needTransferEncoding) {
+  public String post(String url, String xmlParam, boolean needTransferEncoding) {
     String requestString = xmlParam;
     try {
       requestString = new String(xmlParam.getBytes(CharEncoding.UTF_8), CharEncoding.ISO_8859_1);

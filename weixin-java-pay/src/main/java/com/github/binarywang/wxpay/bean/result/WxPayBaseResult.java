@@ -39,7 +39,10 @@ public abstract class WxPayBaseResult {
    */
   @XStreamAlias("return_code")
   protected String returnCode;
-  /**
+  public WxPayBaseResult() {
+}
+
+/**
    * 返回信息
    */
   @XStreamAlias("return_msg")
@@ -116,11 +119,11 @@ public abstract class WxPayBaseResult {
   /**
    * 从xml字符串创建bean对象
    */
-  public static <T extends WxPayBaseResult> T fromXML(String xmlString, Class<T> clz) {
+  public static Object fromXML(String xmlString, Class clz) {
     XStream xstream = XStreamInitializer.getInstance();
     xstream.processAnnotations(clz);
-    T result = (T) xstream.fromXML(xmlString);
-    result.setXmlString(xmlString);
+    Object result =   xstream.fromXML(xmlString);
+//    result.setXmlString(xmlString);
     return result;
   }
 

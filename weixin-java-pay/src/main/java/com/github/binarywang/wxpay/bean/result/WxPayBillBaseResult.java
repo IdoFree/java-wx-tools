@@ -8,8 +8,14 @@ public class WxPayBillBaseResult implements Serializable {
    * 交易状态:REFUND 付款银行:CFT 货币种类:CNY 总金额:0.00 企业红包金额:0.00 微信退款单号: 商户退款单号:20170406010000933 退款金额:0.01 企业红包退款金额:0.00
    * 退款类型:ORIGINAL 退款状态:SUCCESS 商品名称: 商户数据包: 手续费:0.00000 费率 :0.60%
    */
+	
   private static final long serialVersionUID = 1L;
-  /**
+  public WxPayBillBaseResult() {
+	super();
+	// TODO Auto-generated constructor stub
+}
+
+/**
    * 交易时间
    */
   private String tradeTime;

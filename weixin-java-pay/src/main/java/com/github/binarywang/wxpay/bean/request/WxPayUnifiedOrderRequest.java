@@ -298,8 +298,16 @@ public class WxPayUnifiedOrderRequest extends WxPayBaseRequest {
     setLimitPay(builder.limitPay);
     setOpenid(builder.openid);
   }
+  
+  
 
-  public static Builder newBuilder() {
+  public WxPayUnifiedOrderRequest() {
+	super();
+}
+
+
+
+public static Builder newBuilder() {
     return new Builder();
   }
 

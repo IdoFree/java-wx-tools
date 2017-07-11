@@ -11,7 +11,13 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
  */
 @XStreamAlias("xml")
 public class WxPayMicropayResult extends WxPayBaseResult {
-  /**
+	
+  public WxPayMicropayResult() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+/**
    * <pre>
    * 用户标识
    * openid

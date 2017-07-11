@@ -17,7 +17,12 @@ public class WxEntPayQueryResult extends WxPayBaseResult {
   @XStreamAlias("partner_trade_no")
   private String partnerTradeNo;
 
-  /**
+  public WxEntPayQueryResult() {
+	super();
+	// TODO Auto-generated constructor stub
+}
+
+/**
    * 付款单号
    */
   @XStreamAlias("detail_id")
